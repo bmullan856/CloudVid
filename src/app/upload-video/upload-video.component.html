@@ -1,0 +1,81 @@
+<div>
+    <div  class="container">
+
+      <app-nav-bar>
+      </app-nav-bar>
+
+            <!--New Asset Box-->
+            <div class="row align-items-start">
+                <div class="col-2"  ></div>
+    
+                <div class="col-8" style="text-align: left;border-bottom:1px solid #222222;">
+                  <p>Add Image</p>
+    
+                  <form style="font-size: 10pt;" id="newAssetForm">
+                    <div class="mb-3">
+                      <label for="FileName" class="form-label">File Name</label>
+                      <input type="text" class="form-control" id="FileName" name="FileName" [(ngModel)]="submitData.FileName" (change)="updateForm();" >
+                    </div>
+    
+                    <div class="mb-3">
+                      <label for="userID" class="form-label">User Id</label>
+                      <input type="string" class="form-control" id="userID" name="userID" [(ngModel)]="submitData.userID" (change)="updateForm()" >
+                    </div>
+    
+                    <div class="mb-3">
+                      <label for="userName" class="form-label">User Name</label>
+                      <input type="text" class="form-control" id="userName" name="userName" [(ngModel)]="submitData.userName" (change)="updateForm()" >
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="userName" class="form-label">title</label>
+                      <input type="text" class="form-control" id="title" name="title" [(ngModel)]="submitData.title" (change)="updateForm()" >
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="userName" class="form-label">publisher</label>
+                      <input type="text" class="form-control" id="publisher" name="publisher" [(ngModel)]="submitData.publisher" (change)="updateForm()" >
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="userName" class="form-label">producer</label>
+                      <input type="text" class="form-control" id="producer" name="producer" [(ngModel)]="submitData.producer" (change)="updateForm()" >
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="userName" class="form-label">review</label>
+                      <input type="text" class="form-control" id="review" name="review" [(ngModel)]="submitData.review" (change)="updateForm()" >
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="userName" class="form-label">genre</label>
+                      <input type="text" class="form-control" id="genre" name="genre" [(ngModel)]="submitData.genre" (change)="updateForm()" >
+                    </div>
+
+                    <label for="userName" class="form-label">age</label>
+                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" type="text" id="age" name="age" [(ngModel)]="submitData.age" (change)="updateForm()">
+                      <option selected>Open this select menu</option>
+                      <option value="Age 4+">Age 4+</option>
+                      <option value="Age 8">Age 8+</option>
+                      <option value="Age 12+">Age 12+</option>
+                      <option value="Age 15+">Age 15+</option>
+                      <option value="Age 18+">Age 18+</option>
+                    </select>
+
+        
+                    <div class="mb-3">
+                      <label for="File" class="form-label">File to Upload</label>
+                      <input type="file" class="form-control" id="File" name="File" [(ngModel)]="submitData.File" (change)="updateForm()" >
+                    </div>
+                
+                    <button type="button" id="subNewForm" class="btn btn-primary" (click)="postImage()">Submit</button> <br/><br/>
+                    
+                  </form>
+                </div>
+    
+                <div class="col-2"  ></div>
+            </div>
+        
+
+    </div>
+</div>
