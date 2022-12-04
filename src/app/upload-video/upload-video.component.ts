@@ -49,7 +49,6 @@ export class UploadVideoComponent {
   
     PostRequest = () => {
       this.webService.postVideos(this.form_data).subscribe((response: any) => {
-        console.log('done')
         });
       }
 

@@ -17,6 +17,6 @@ export class WebService { constructor(private http: HttpClient) {}
           deleteVideos(data: any) {
             console.log(data)
             return this.http.delete( 'https://prod-25.uksouth.logic.azure.com:443/workflows/d8727c9aeba145358b2cabd1314d5091/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=JN5AXsrtXuk86Y8dp1ThpNug3PE5nmxeDojvOGI7qzc', 
-            data);
+            data); 
           }
       }

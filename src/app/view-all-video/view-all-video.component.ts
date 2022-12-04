@@ -11,10 +11,6 @@ export class ViewAllVideoComponent {
   loading: boolean = false;
   form_data: any = new FormData();
 
-  delvid = (id: any) => {
-    this.delSingleVid(id)
-  }
-
   getImages = () => {
     this.loading = !this.loading
     this.getRequest()
@@ -25,7 +21,8 @@ export class ViewAllVideoComponent {
 
   delSingleVid= (id: any) => {
     this.form_data.append('id', id); 
-    this.webService.postVideos(this.form_data).subscribe((response: any) => {
+    console.log(this.form_data)
+    this.webService.deleteVideos(this.form_data).subscribe((response: any) => {
       console.log('done')
       }); 
   }
