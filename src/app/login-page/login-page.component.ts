@@ -21,6 +21,10 @@ export class LoginPageComponent {
     this.isNotLogedin= true
     sessionStorage.setItem("isAdmin", '');
     sessionStorage.setItem("userName", '');
+    this.loginData = {
+      userName: '',
+      userPassword: '',
+    }
   }
 
   constructor(private webService: WebService) {}
