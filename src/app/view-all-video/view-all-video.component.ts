@@ -10,16 +10,20 @@ export class ViewAllVideoComponent {
   data: any ;
   loading: boolean = false;
   form_data: any = new FormData();
-
-  getImages = () => {
-    this.loading = !this.loading
-    this.getRequest()
+  loginData: any = {
+    userName: '',
+    isAdmin: '',
   }
+  isNotLogedin: any = true
+  submitReview = {
+    review: ''
+  } 
+
 
   constructor(private webService: WebService,) {}
 
 
-  delSingleVid= (id: any, filePath: any ) => {
+  delSingleVid = (id: any, filePath: any ) => {
     console.log(id, filePath)
     this.webService.deleteVideos(id, filePath).subscribe((response: any) => {
       this.webService.getVideos().subscribe((response: any) => {
@@ -28,6 +32,11 @@ export class ViewAllVideoComponent {
       }); 
     
   }
+
+  postComment() {
+    console.log('posting comment')
+  }
+
 
   // ask to see ig this is possible
   goToSingleVid(): void {
@@ -44,5 +53,14 @@ export class ViewAllVideoComponent {
     }
 
   ngOnInit() { 
+    this.loading = !this.loading
+    this.getRequest()
+    if (sessionStorage.getItem("userName") != '') {
+      this.loginData = {
+        userName: sessionStorage.getItem("userName"),
+        isAdmin: sessionStorage.getItem("isAdmin"),
+      }
+      this.isNotLogedin = false     
+    };
   }    
 }

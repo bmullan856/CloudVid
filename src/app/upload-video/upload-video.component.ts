@@ -8,6 +8,7 @@ import { WebService } from '../web.service';
 })
 export class UploadVideoComponent {
   data: any ;
+  isNotLogedin: any = true
   form_data: any = new FormData();
   submitData: any = {
     File: '',
@@ -23,6 +24,10 @@ export class UploadVideoComponent {
   }
   isNotSubmitted: any = true
   loading = false
+  loginData: any = {
+    userName: '',
+    isAdmin: '',
+  }
 
 
   antherVid = () => {
@@ -61,7 +66,6 @@ export class UploadVideoComponent {
   constructor(private webService: WebService) {}
   
     PostRequest = () => {
-    console.log("inside")
       this.loading = true;
       this.webService.postVideos(this.form_data).subscribe((response: any) => {
         this.isNotSubmitted = false
@@ -70,9 +74,16 @@ export class UploadVideoComponent {
         });
        }
 
-    ngOnInit() { 
-      console.log(sessionStorage.getItem("userName"));
-      console.log(sessionStorage.getItem("isAdmin"));
+  ngOnInit() {
+    if (sessionStorage.getItem("userName") != '') {
+      this.isNotLogedin = false
+      this.loginData = {
+        userName: sessionStorage.getItem("userName"),
+        isAdmin: sessionStorage.getItem("isAdmin"),
+      }
+    }
+
+        
       }   
 
 }

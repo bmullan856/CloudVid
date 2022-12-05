@@ -10,7 +10,7 @@ export class LoginPageComponent {
   data: any ;
   loginData: any = {
     userName: '',
-    userPassword: '',
+    isAdmin: '',
   }
   isNotLogedin: any = true 
   loading = false
@@ -23,7 +23,7 @@ export class LoginPageComponent {
     sessionStorage.setItem("userName", '');
     this.loginData = {
       userName: '',
-      userPassword: '',
+      isAdmin: '',
     }
   }
 
@@ -47,7 +47,7 @@ export class LoginPageComponent {
 
         this.loginData = {
           userName: '',
-          userPassword: '',
+          isAdmin: '',
         }
         });
       }
@@ -55,9 +55,11 @@ export class LoginPageComponent {
         if (sessionStorage.getItem("userName") != '') {
           this.loginData = {
             userName: sessionStorage.getItem("userName"),
-            userPassword: sessionStorage.getItem("userPassword"),
+            isAdmin: sessionStorage.getItem("isAdmin"),
           }
           this.isNotLogedin = false     
+          console.log(sessionStorage.getItem("isAdmin"))
+          
         };
     
         }   

@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent {
-isLoggedIn: any = false
-
+  
 }
