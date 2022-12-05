@@ -13,8 +13,11 @@ export class WebService { constructor(private http: HttpClient) {}
             data);
           }
 
-          
           deleteVideos(id: any, filePath: any) {
             return this.http.delete( "https://prod-25.uksouth.logic.azure.com/workflows/d8727c9aeba145358b2cabd1314d5091/triggers/manual/paths/invoke/" + filePath + "/" + id + "?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=JN5AXsrtXuk86Y8dp1ThpNug3PE5nmxeDojvOGI7qzc"); 
+          }
+
+          getUser(data: any) {
+            return this.http.get( "https://prod-38.northeurope.logic.azure.com/workflows/6ef7efd0454241ab9c539b9e8dfca444/triggers/manual/paths/invoke/rest/v1/asset/" + data.userName + "/" + data.userPassword + "?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=a5jgwcGY7bDVrp1Aour8KYESNRK6ZW2cdTzuwnWwDzA"); 
           }
       }

@@ -8,7 +8,6 @@ import { WebService } from '../web.service';
 })
 export class UploadVideoComponent {
   data: any ;
-  loading: boolean = false;
   form_data: any = new FormData();
   submitData: any = {
     File: '',
@@ -22,12 +21,27 @@ export class UploadVideoComponent {
     age: '',
     review: '',
   }
+  isNotSubmitted: any = true
+  loading = false
 
-  updateForm = () => {
-    // for ( var key in this.submitData ) {
-    //   this.form_data.append(key, this.submitData[key]);
-    // }
-  }
+
+  antherVid = () => {
+    this.isNotSubmitted = true
+    this.submitData = {
+      File: '',
+      userName: '',
+      userID: '',
+      FileName: '',
+      title: '',
+      publisher:  '',
+      producer: '',
+      genre: '',
+      age: '',
+      review: '',
+    }
+    this.form_data = new FormData()
+  } 
+
 
   postImage = () => {    
     this.form_data.append('FileName', $('#FileName').val()); 
@@ -47,8 +61,18 @@ export class UploadVideoComponent {
   constructor(private webService: WebService) {}
   
     PostRequest = () => {
+    console.log("inside")
+      this.loading = true;
       this.webService.postVideos(this.form_data).subscribe((response: any) => {
+        this.isNotSubmitted = false
+        this.loading = false;
+
         });
-      }
+       }
+
+    ngOnInit() { 
+      console.log(sessionStorage.getItem("userName"));
+      console.log(sessionStorage.getItem("isAdmin"));
+      }   
 
 }

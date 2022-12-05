@@ -1,23 +1,35 @@
 <div>
-    <div  class="container">
-<app-nav-bar>
-</app-nav-bar>
+  <div class="container">
+    <app-nav-bar>
+    </app-nav-bar>
 
-      
-<div class="mb-3 row">
-    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-    <div class="col-sm-10">
-      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="">
+    <div *ngIf="isNotLogedin" >
+      <div class="mb-3 row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">User Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="userName" name="userName" [(ngModel)]="loginData.userName">
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" id="inputPassword" [(ngModel)]="loginData.userPassword">
+        </div>
+      </div>
+
+      <div *ngIf="loading">
+        <div class="spinner-border text-secondary" role="status" ng-show="loading">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-primary" (click)="logIn()">Login</button>
+
+    </div>
+
+    <div *ngIf="!isNotLogedin" >
+      <p class="login"> Welcome {{loginData.userName}} Your Logged in</p>
+      <button type="button" class="btn btn-danger" (click)="logOut()">Log Out</button>
     </div>
   </div>
-  <div class="mb-3 row">
-    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword">
-    </div>
-  </div>
-  
-  <button type="button" class="btn btn-primary">Login</button>
-
-</div>
 </div>
