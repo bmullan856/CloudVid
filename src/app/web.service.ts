@@ -20,4 +20,5 @@ export class WebService { constructor(private http: HttpClient) {}
           getUser(data: any) {
             return this.http.get( "https://prod-07.northeurope.logic.azure.com/workflows/efaf6efa0ffa43fdb5bfc3884fb85e4d/triggers/manual/paths/invoke/rest/v1/asset/" + data.userName + "/" + data.userPassword + "?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=1iBNxm6zdBkoFNswnTXacRXLkdedDvXoyRxPfx8dcMA"); 
           }
+          
       }
