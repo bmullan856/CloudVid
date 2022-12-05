@@ -27,7 +27,6 @@ export class UploadVideoComponent {
     // for ( var key in this.submitData ) {
     //   this.form_data.append(key, this.submitData[key]);
     // }
-
   }
 
   postImage = () => {    

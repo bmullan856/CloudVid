@@ -19,12 +19,14 @@ export class ViewAllVideoComponent {
   constructor(private webService: WebService,) {}
 
 
-  delSingleVid= (id: any) => {
-    this.form_data.append('id', id); 
-    console.log(this.form_data)
-    this.webService.deleteVideos(this.form_data).subscribe((response: any) => {
-      console.log('done')
+  delSingleVid= (id: any, filePath: any ) => {
+    console.log(id, filePath)
+    this.webService.deleteVideos(id, filePath).subscribe((response: any) => {
+      this.webService.getVideos().subscribe((response: any) => {
+        this.data = response
+    });
       }); 
+    
   }
 
   // ask to see ig this is possible
