@@ -54,19 +54,19 @@
                         </div>
                       </div>
                     </div>
-                    <div class="card" *ngIf="!isNotLogedin">
-                      <h5 class="card-header">Add Review</h5>
-                      <div class="card-body">
-                        <h5 class="card-title">Enter your review</h5>
-                        <div class="mb-3">
-                          <input type="text" class="form-control" id="userName" name="userName" [(ngModel)]="comment"  >
+                    <div class="card" >
+                        <h5 class="card-header">Add Review</h5>
+                        <div class="card-body">
+                          <h5 class="card-title">Enter your review</h5>
+                          <div class="mb-3">
+                            <input type="text" class="form-control" id="userName" name="userName" [(ngModel)]="comment">
+                          </div>
                         </div>
-                        <a (click)="postComment(video.id, video.review)"
-                          *ngIf="!isNotLogedin && loginData.isAdmin == 'true'" class="btn btn-secondary">Post Comment</a>
-                      </div>
+                        <a (click)="postComment(video.id, video.review)" *ngIf="!isNotLogedin" class="btn btn-secondary">Post Comment</a>
+                        <br>
                     </div>
                     <a (click)="delSingleVid(video.filepath.replace('/vidcloud856/', ''), video.id)"
-                      *ngIf="!isNotLogedin && loginData.isAdmin == 'true'" class="btn btn-danger">delete</a>
+                        *ngIf="!isNotLogedin && loginData.isAdmin == 'true'" class="btn btn-danger">delete</a>
                   </div>
                 </div>
               </div>

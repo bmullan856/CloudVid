@@ -44,16 +44,8 @@ export class ViewAllVideoComponent {
 
     this.webService.postComment(id, newReviewArray).subscribe((response: any) => {
       window.location.reload()
-      this.postingComment = false
+      this.postingComment = false 
     });
-
-  }
-
-
-  // ask to see ig this is possible
-  goToSingleVid(): void {
-    // this.stateService.data = {data};
-    (<any>this.webService).navigate(['/video/{{video.id}}']);
   }
 
   getRequest = () => {
@@ -67,6 +59,7 @@ export class ViewAllVideoComponent {
   ngOnInit() {
     this.loading = !this.loading
     this.getRequest()
+    
     if (sessionStorage.getItem("userName") != '') {
       this.loginData = {
         userName: sessionStorage.getItem("userName"),
