@@ -44,7 +44,7 @@
                     <p class="card-text card-Description">age : {{ video.age }}</p>
                     <div class="card-footer text-muted reviews">
                       Film Review:
-                      <div *ngFor="let review of video.review">
+                      <div *ngFor="let review of video.review" class="reviewCard">
                         <div class="card">
                           <h5 class="card-header">{{review.userName}}</h5>
                           <div class="card-body">
