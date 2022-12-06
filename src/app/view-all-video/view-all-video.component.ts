@@ -7,34 +7,46 @@ import { WebService } from '../web.service';
   styleUrls: ['./view-all-video.component.scss']
 })
 export class ViewAllVideoComponent {
-  data: any ;
+  data: any;
   loading: boolean = false;
+  postingComment: any = false;
   form_data: any = new FormData();
   loginData: any = {
     userName: '',
     isAdmin: '',
   }
   isNotLogedin: any = true
-  submitReview = {
-    review: ''
-  } 
 
 
-  constructor(private webService: WebService,) {}
+  userName: any = ''
+  comment: any =''
 
 
-  delSingleVid = (id: any, filePath: any ) => {
+
+  constructor(private webService: WebService,) { }
+
+
+  delSingleVid = (id: any, filePath: any) => {
     console.log(id, filePath)
     this.webService.deleteVideos(id, filePath).subscribe((response: any) => {
       this.webService.getVideos().subscribe((response: any) => {
         this.data = response
+      });
     });
-      }); 
-    
+
   }
 
-  postComment() {
-    console.log('posting comment')
+  postComment(id: any, reviews: any) {
+    console.log(reviews)
+    let newReviewArray = [{userName: this.userName, comment: this.comment }]
+    reviews.forEach((data :any, ) => newReviewArray.push(data));
+    this.postingComment = true
+
+    this.webService.postComment(id, newReviewArray).subscribe((response: any) => {
+      window.location.reload()
+      this.postingComment = false
+    });
+
   }
 
 
@@ -42,17 +54,17 @@ export class ViewAllVideoComponent {
   goToSingleVid(): void {
     // this.stateService.data = {data};
     (<any>this.webService).navigate(['/video/{{video.id}}']);
-}
+  }
 
   getRequest = () => {
     this.webService.getVideos().subscribe((response: any) => {
       this.data = response
       this.loading = !this.loading
       console.log(this.data)
-      });
-    }
+    });
+  }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.loading = !this.loading
     this.getRequest()
     if (sessionStorage.getItem("userName") != '') {
@@ -60,7 +72,8 @@ export class ViewAllVideoComponent {
         userName: sessionStorage.getItem("userName"),
         isAdmin: sessionStorage.getItem("isAdmin"),
       }
-      this.isNotLogedin = false     
+      this.userName =  sessionStorage.getItem("userName")
+      this.isNotLogedin = false
     };
-  }    
+  }
 }

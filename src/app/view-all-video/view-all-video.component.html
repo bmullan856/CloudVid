@@ -18,17 +18,16 @@
     <!-- view Asset Area-->
     <div class="row align-items-start">
       <div class="col-2"></div>
-
       <div class="col-8" style="text-align: left;">
         <div style="padding:5px;">
         </div>
-        <div *ngIf="loading">
+        <div *ngIf="loading || postingComment">
           <div class="spinner-border text-secondary" role="status" ng-show="loading">
             <span class="visually-hidden">Loading...</span>
           </div>
         </div>
 
-        <div id="ImageList">
+        <div id="ImageList" *ngIf="!postingComment">
           <div class="container text-center">
             <div class="row">
               <div class="col" *ngFor="let video of data">
@@ -60,9 +59,9 @@
                       <div class="card-body">
                         <h5 class="card-title">Enter your review</h5>
                         <div class="mb-3">
-                          <input type="text" class="form-control" id="userName" name="userName" [(ngModel)]="submitReview.review"  >
+                          <input type="text" class="form-control" id="userName" name="userName" [(ngModel)]="comment"  >
                         </div>
-                        <a (click)="postComment()"
+                        <a (click)="postComment(video.id, video.review)"
                           *ngIf="!isNotLogedin && loginData.isAdmin == 'true'" class="btn btn-secondary">Post Comment</a>
                       </div>
                     </div>
