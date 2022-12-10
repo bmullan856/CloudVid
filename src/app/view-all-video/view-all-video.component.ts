@@ -41,10 +41,8 @@ export class ViewAllVideoComponent {
     let newReviewArray = [{userName: this.userName, comment: this.comment }]
     reviews.forEach((data :any, ) => newReviewArray.push(data));
     this.postingComment = true
-
     this.webService.postComment(id, newReviewArray).subscribe((response: any) => {
-      window.location.reload()
-      this.postingComment = false 
+      window.location.reload() 
     });
   }
 

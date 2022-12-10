@@ -14,8 +14,9 @@ export class WebService { constructor(private http: HttpClient) {}
           }
 
           deleteVideos(id: any, filePath: any) {
-            return this.http.delete( "https://prod-25.uksouth.logic.azure.com/workflows/d8727c9aeba145358b2cabd1314d5091/triggers/manual/paths/invoke/" + filePath + "/" + id + "?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=JN5AXsrtXuk86Y8dp1ThpNug3PE5nmxeDojvOGI7qzc"); 
+            return this.http.delete( "https://prod-25.uksouth.logic.azure.com/workflows/d8727c9aeba145358b2cabd1314d5091/triggers/manual/paths/invoke/" + filePath + "/" + id + "?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=JN5AXsrtXuk86Y8dp1ThpNug3PE5nmxeDojvOGI7qzc", ); 
           }
+          // {'headers': "access-Control-Allow-Orgin": '*'}
 
           getUser(data: any) {
             return this.http.get( "https://prod-07.northeurope.logic.azure.com/workflows/efaf6efa0ffa43fdb5bfc3884fb85e4d/triggers/manual/paths/invoke/rest/v1/asset/" + data.userName + "/" + data.userPassword + "?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=1iBNxm6zdBkoFNswnTXacRXLkdedDvXoyRxPfx8dcMA"); 
