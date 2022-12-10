@@ -33,7 +33,6 @@ export class ViewAllVideoComponent {
         this.data = response
       });
     });
-
   }
 
   postComment(id: any, reviews: any) {
