@@ -8,8 +8,8 @@
             <div class="row align-items-start">
                 <div class="col-2"></div>
 
-                <h1 class="warning" *ngIf="isNotLogedin && loginData.isAdmin !== 'true'"> Logged Log upload Video</h1>
-                <h4 *ngIf="isNotLogedin && loginData.isAdmin !== 'true'"> Log in as ADMIN to upload Video </h4>
+                <h1 class="warning" *ngIf="isNotLogedin || loginData.isAdmin !== 'true'"> Logged Log upload Video</h1>
+                <h4 *ngIf="isNotLogedin || loginData.isAdmin !== 'true'"> Log in as ADMIN to upload Video </h4>
                 <div class="col-8" *ngIf="isNotSubmitted && !isNotLogedin && loginData.isAdmin == 'true'" style="text-align: left;border-bottom:1px solid #222222;">    
                     <div class="mb-3">
                       <label for="userName" class="form-label">User Name</label>

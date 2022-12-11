@@ -81,6 +81,8 @@ export class UploadVideoComponent {
         userName: sessionStorage.getItem("userName"),
         isAdmin: sessionStorage.getItem("isAdmin"),
       }
+    console.log(sessionStorage.getItem("isAdmin"))
+    console.log(sessionStorage.getItem("userName"))
     }
 
         
